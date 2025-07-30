@@ -1,22 +1,19 @@
 import React from "react";
-import flagship from "@/public/flagship.jpg";
 import Link from "next/link";
 import { ProductItem } from "@/components/ui/product-item";
+import { getFlagshipProductFromDb } from "@/core/server/productService";
 
-type FlagshipPageProps = {};
+export const revalidate = 600;
 
-const FlagshipPage: React.FC<FlagshipPageProps> = ({}) => {
+const FlagshipPage: React.FC = async () => {
+  const flagshipProduct = await getFlagshipProductFromDb();
+
+  const timestamp = new Date().toString();
+
   return (
     <div className="flex flex-col items-center justify-center p-8">
-      <ProductItem
-        product={{
-          pid: 1,
-          title: "Our flagship product",
-          description: "FERRARI ENZO V12, 6.0L de 660 ch",
-          price: 100000,
-          imgUrl: flagship,
-        }}
-      />
+      <span>{timestamp}</span>
+      <ProductItem product={flagshipProduct} />
 
       <Link className="link" href={"/"}>
         Back SPA
