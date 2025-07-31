@@ -1,3 +1,4 @@
+import { Product } from "@/lib/products";
 import "server-only";
 
 export async function getFlagshipProductFromDb() {
@@ -16,6 +17,14 @@ export async function getFlagshipProductFromDb() {
       resolve({
         ...flagshipProduct,
       });
+    }, 100);
+  });
+}
+
+export async function getProductQuantity(pid: Product["pid"]) {
+  return new Promise<number>((resolve, reject) => {
+    setTimeout(() => {
+      resolve(Math.floor(Math.random() * 100));
     }, 100);
   });
 }

@@ -20,7 +20,7 @@ export const Navbar = () => {
         </a>
 
         <div className="block w-auto" id="navbar-default">
-          <ul className="font-medium flex  p-0 border-b border-b-gray-100 rounded-lg  flex-row space-x-8 bg-white ">
+          <ul className="font-medium flex  p-0 border-b border-b-gray-100  flex-row space-x-8 bg-white ">
             {menu.map((m) => {
               const active = pn === m.href;
 
@@ -29,7 +29,7 @@ export const Navbar = () => {
                   <a
                     href={m.href}
                     className={`block py-2 px-3 link  ${
-                      active ? "border-b-2 border-b-pink-500  " : ""
+                      active ? "border-b-2 border-b-pink-600  " : ""
                     }`}
                     aria-current="page"
                   >

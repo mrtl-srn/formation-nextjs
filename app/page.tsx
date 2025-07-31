@@ -15,7 +15,7 @@ export default function Home({ searchParams }: HomeProps) {
     <div className="font-sans grid grid-rows-[250px_1fr_10px] items-center justify-items-center min-h-screen ">
       <header className="flex flex-col items-center gap-10">
         <h1 className="text-6xl font-bold">
-          Welcome to <span className="text-orange-600">Amazing!</span>
+          Welcome to <span className="text-pink-600">Amazing!</span>
         </h1>
         <span>Referrer: {referrer}</span>
       </header>

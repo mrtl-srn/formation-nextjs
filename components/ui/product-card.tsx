@@ -1,12 +1,17 @@
+import { Locale } from "@/components/ui/product-item";
 import { Product } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 
 export type ProductCardProps = {
   product: Product;
+  locale?: Locale;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  locale = "fr",
+}) => {
   const href = `/products/${product.pid}`;
 
   return (
@@ -25,7 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         src={product.imgUrl}
         alt="img"
       />
-      <span>{product.description}</span>
+      <span>{product.description[locale]}</span>
     </Link>
   );
 };
