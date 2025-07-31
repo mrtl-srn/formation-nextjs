@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { InfoButton } from "@/components/ui/info-button";
+import PreOrderForm from "@/components/ui/preorder-form";
 import { Product } from "@/lib/products";
 import Image from "next/image";
 
@@ -23,11 +24,23 @@ export const ProductItem = ({
       <h1 className="text-5xl font-bold text-center">{product.title}</h1>
       <h3 className="text-center">{product.description[locale]}</h3>
       <h3 className="text-center">{product.price}€</h3>
-      <div className="flex gp-2">
-        <Button>Buy one {qty && `(${qty} items left)`}</Button>
-        <InfoButton>More info</InfoButton>
-      </div>
-      <Image src={product.imgUrl} alt="" width={256} height={160} />
+      {!product.preorder && (
+        <div className="flex gp-2">
+          <Button>Buy one {qty && `(${qty} items left)`}</Button>
+          <InfoButton>More info</InfoButton>
+        </div>
+      )}
+
+      <Image src={product.imgUrl} alt="" width={500} height={350} />
+
+      {product.preorder && (
+        <>
+          <h2 className="block text-gray-700 text-2xl font-bold mb-6 text-center">
+            Renseignez votre email pour précommander
+          </h2>
+          <PreOrderForm />
+        </>
+      )}
     </div>
   );
 };

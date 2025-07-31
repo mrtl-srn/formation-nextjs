@@ -9,6 +9,7 @@ export type Product = {
   description: Record<Locale, string>;
   price: number;
   imgUrl: string | StaticImageData;
+  preorder?: boolean;
 };
 
 export const products: Product[] = [
@@ -21,6 +22,7 @@ export const products: Product[] = [
     },
     price: 42,
     imgUrl: "/products.jpg",
+    preorder: false,
   },
   {
     pid: 2,
@@ -31,5 +33,17 @@ export const products: Product[] = [
     },
     price: 12,
     imgUrl: "/paper.jpg",
+    preorder: false,
+  },
+  {
+    pid: 3,
+    title: "iToaster",
+    description: {
+      fr: "Le toaster qui grille vos tranches de pain avec style !",
+      en: "The toaster that toasts your bread slices in style!",
+    },
+    price: 49.99,
+    imgUrl: "/itoaster.jpeg",
+    preorder: true,
   },
 ];
