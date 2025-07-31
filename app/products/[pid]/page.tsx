@@ -1,3 +1,4 @@
+import { Preordered } from "@/components/ui/preordered";
 import { Locale, ProductItem } from "@/components/ui/product-item";
 import { getProductQuantity } from "@/core/server/productService";
 import { products } from "@/lib/products";
@@ -6,14 +7,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type ProductPageProps = {
-  params: Promise<{ pid: string }>;
+  params: Promise<{ pid: string; success?: boolean }>;
 };
 
 export const dynamic = "force-dynamic";
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
-  const { pid } = await params;
+  const { pid, success } = await params;
   const productId = parseInt(pid);
+
+  console.log("success :", success);
 
   const product = products.find((p) => p.pid === productId);
 
@@ -36,6 +39,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
       <Link className="link" href="/">
         Back to home
       </Link>
+      <Preordered />
       <ProductItem product={product} locale={locale} qty={qty} />
     </div>
   );
